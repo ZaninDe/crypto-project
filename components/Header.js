@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import TransferModal from './modal/TransferModal'
-import Link from 'next/link'
+import ClainButton from './ClainButton'
+
 
 Modal.setAppElement('#__next')
 
@@ -26,25 +27,7 @@ const Header = ({walletAddress, sanityTokens, thirdWebTokens, connectWallet}) =>
     },
   }
 
-  // Timer Button Clain
-
-  const TIME_TO_TURN_BUTTON_CLICKABLE = 60 * 60 * 24// 24hrs
-  const [secondsAmount, setSecondsAmount] = useState(TIME_TO_TURN_BUTTON_CLICKABLE)
-  const [isActive, setIsActive] = useState(false)
-
-  const hours = Math.floor(secondsAmount / (60 * 60) )
-  const minutes = secondsAmount % 60
-
-  useEffect(() => {
-    if(secondsAmount > 0) {
-    setTimeout(() => {
-     setSecondsAmount(state => state - 1)
-    }, 1000 * 60)
-  } else {
-    setIsActive(true)
-  }
-  }, [secondsAmount])
-
+  
   return (
     <Wrapper>
       <Title>Assets</Title>
@@ -64,18 +47,9 @@ const Header = ({walletAddress, sanityTokens, thirdWebTokens, connectWallet}) =>
           <Button style={{ backgroundColor: '#3773f5', color: '#000'}}>
             Buy / Sell
           </Button>
-          <Link href={'/?transfer=1'}>
-           {
-             isActive ? (
-              <Button>Clain</Button>
-             ) : (
-              <Button disabled="disabled">
-              <span>{String(hours).padStart(2, '0')}</span>
-              <span>:</span>
-              <span>{String(minutes).padStart(2, '0')}</span>
-            </Button>)
-           }
-          </Link>
+
+          <ClainButton />
+         
         </ButtonsContainer>
         <Modal
           isOpen={!!router.query.transfer}

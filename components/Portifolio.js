@@ -34,6 +34,7 @@ const Portifolio = ({sanityTokens, thirdWebTokens, walletAddress}) => {
   return (
    <Wrapper>
      <Content>
+       <img src="../game.jpg" alt=""/>
        <Chart>
          <div>
            <Balance>
@@ -44,7 +45,6 @@ const Portifolio = ({sanityTokens, thirdWebTokens, walletAddress}) => {
              </BalanceValue>
            </Balance>
          </div>
-        <BalanceChart />
        </Chart>
      <PortifolioTable>
       <TableItem>
