@@ -11,6 +11,7 @@
     "@3rdweb/hooks": "^1.9.2",
     "@3rdweb/react": "^1.9.3",
     "@3rdweb/sdk": "^1.41.0",
+    "@chhxin/countdown": "^1.0.2",
     "@sanity/client": "^3.1.0",
     "@sanity/image-url": "^1.0.1",
     "chart.js": "^3.7.1",
@@ -22,6 +23,7 @@
     "react-icons": "^4.3.1",
     "react-loader-spinner": "^5.1.4",
     "react-modal": "^3.14.4",
+    "react-timer-hook": "^3.0.5",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useCountDown } from '@chhxin/countdown'
 import styled from 'styled-components'
 import Link from 'next/link'
 
@@ -8,15 +9,16 @@ const ClainButton = () => {
 
   const [secondsAmount, setSecondsAmount] = useState(TOTAL_SECONDS_AMOUNT_PER_CLAIN)
 
-  const minutes = secondsAmount % 60
+  const minutes = localStorage.getItem('secondsAmount') % 60
 
-  const hours = Math.floor(secondsAmount / (60 * 60))
+  const hours = Math.floor(localStorage.getItem('secondsAmount') / (60 * 60))
 
   useEffect(() => {
     if(secondsAmount > 0) {
     setTimeout(() => {
      setSecondsAmount(state => state - 1)
-    }, 1000 * 60)
+     localStorage.setItem('secondsAmount', secondsAmount)
+    }, 1000)
   }
   }, [secondsAmount])
 
