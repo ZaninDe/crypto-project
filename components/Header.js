@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import TransferModal from './modal/TransferModal'
 import ClainButton from './ClainButton'
+import NodeButton from './NodeButton'
 
 
 Modal.setAppElement('#__next')
@@ -44,9 +45,7 @@ const Header = ({walletAddress, sanityTokens, thirdWebTokens, connectWallet}) =>
             Connect Wallet
           </Button>
         )}
-          <Button style={{ backgroundColor: '#3773f5', color: '#000'}}>
-            Buy / Sell
-          </Button>
+          <NodeButton />
 
           <ClainButton />
          

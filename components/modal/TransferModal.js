@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Transfer from './Transfer'
-import Receive from './Receive'
 import CoinSelector from './CoinSelector'
 import { TailSpin } from  'react-loader-spinner'
 import styled from 'styled-components'
@@ -8,7 +7,8 @@ import styled from 'styled-components'
 
 const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
   const [action, setAction] = useState('send')
-  const [selectedToken, setSelectedToken] = useState(sanityTokens[0])
+  const [selectedToken, setSelectedToken] = useState(sanityTokens[3])
+
 
 
   const selectedStyle = {
@@ -27,14 +27,6 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
           thirdWebTokens={thirdWebTokens}
           walletAddress={walletAddress}
         />
-        )
-      case 'receive':
-        return (
-          <Receive 
-            setAction={setAction}
-            selectedToken={selectedToken}
-            walletAddress={walletAddress}
-          />
         )
       case 'select':
         return ( 
@@ -95,14 +87,9 @@ const TransferModal = ({ sanityTokens, thirdWebTokens, walletAddress }) => {
         <Option style={action === 'send' ? selectedStyle : unselectedStyle}
           onClick={() => setAction('send')}
         >
-          <p>send</p>
+          <p>MAKE A NODE</p>
         </Option>
           
-        <Option style={action === 'receive' ? selectedStyle : unselectedStyle}
-          onClick={() => setAction('receive')}
-        >
-          <p>receive</p>
-        </Option>
       </Selector>
       <ModalMain>
         {selectedModal(action)}

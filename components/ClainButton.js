@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useCountDown } from '@chhxin/countdown'
 import styled from 'styled-components'
 import Link from 'next/link'
 
@@ -7,11 +6,7 @@ const ClainButton = () => {
   // Timer Button Clain
   const TOTAL_SECONDS_AMOUNT_PER_CLAIN = 60 * 60 * 24 //24hrs
 
-  const [secondsAmount, setSecondsAmount] = useState(TOTAL_SECONDS_AMOUNT_PER_CLAIN)
-
-  const minutes = localStorage.getItem('secondsAmount') % 60
-
-  const hours = Math.floor(localStorage.getItem('secondsAmount') / (60 * 60))
+  const [secondsAmount, setSecondsAmount] = useState(0)
 
   useEffect(() => {
     if(secondsAmount > 0) {
@@ -21,6 +16,10 @@ const ClainButton = () => {
     }, 1000)
   }
   }, [secondsAmount])
+
+  const minutes = localStorage.getItem('secondsAmount') % 60
+
+  const hours = Math.floor(localStorage.getItem('secondsAmount') / (60 * 60))
 
   
   return(

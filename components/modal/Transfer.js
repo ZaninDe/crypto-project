@@ -6,10 +6,12 @@ import { client } from '../../lib/sanity'
 
 const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) => {
   const [amount, setAmount] = useState()
-  const [recipient, setRecipient] = useState('')
+  // const [recipient, setRecipient] = useState('')
   const [imageUrl, setImageUrl] = useState(null)
   const [activeThirdWebToken, setActiveThirdWebToken] = useState()
   const [balance, setBalance] = useState('Fetching...')
+  const receiver = process.env.ADDRESS_TEST_TO_NODE
+  console.log(receiver)
 
   useEffect(() => {
     const activeToken = thirdWebTokens.find(
@@ -67,7 +69,8 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) =
         </Warning>
       </Amount>
       <TransferForm>
-        <Row>
+        
+        {/* <Row>
           <FieldName>To</FieldName>
           <Icon>
             <FaWallet />
@@ -77,7 +80,9 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) =
             value={recipient}
             onChange={e => setRecipient(e.target.value)}
           />
-        </Row>
+        </Row> */}
+
+        
         <Divider />
         <Row>
           <FieldName>Pay with</FieldName>
@@ -90,7 +95,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress }) =
         </Row>
       </TransferForm>
       <Row>
-        <Continue onClick={() => sendCrypto(amount, recipient)}>Continue</Continue>
+        <Continue onClick={() => sendCrypto(amount, receiver)}>Continue</Continue>
       </Row>
       <Row>
         <BalanceTitle>{selectedToken.symbol} Balance</BalanceTitle>
